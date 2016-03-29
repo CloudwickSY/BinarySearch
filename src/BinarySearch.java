@@ -1,12 +1,14 @@
-import java.rmi.UnexpectedException;
 import java.util.Scanner;
 
 public class BinarySearch {
 
-	
+	/**
+	 * 
+	 * @param argv
+	 */
 	public static void main(String [] argv){
 		BinarySearch bs = new BinarySearch();
-		bs.start(0, 16);
+		bs.start(-16, 16);
 	}
 	
 	/**
@@ -21,7 +23,7 @@ public class BinarySearch {
 	 * @param max
 	 */
 	public void start(int min, int max){
-		int median = (int) (min+max)/2;
+		int median = Math.floorDiv(min+max, 2);
 		message(median);
 		Scanner s = new Scanner(System.in);
 		String answer = s.next().toString();
@@ -42,6 +44,8 @@ public class BinarySearch {
 		} catch (InvalidInputException e) {
 			invalidAnswer(answer);
 			start(min, max);
+		}finally{
+			s.close();
 		}
 	}
 
